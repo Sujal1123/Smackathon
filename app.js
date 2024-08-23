@@ -65,8 +65,16 @@ app.get("/contact", (req,res) => {
 });
 
 app.get("/signup", (req,res) => {
-    res.render("")
-})
+    res.render("users/signup.ejs");
+});
+
+app.post("/signup", async(req,res) => {
+  let {username, email, password} = req.body;
+  const newUser = new User({email, username});
+  const registeredUser = await User.register(newUser, password);
+  console.log(registeredUser);
+  res.redirect("/");
+});
 
 app.listen(8080, () => {
     console.log("server is listening to port 8080");
