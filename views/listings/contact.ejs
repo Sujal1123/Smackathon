@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Contact us</title>
         <style>
             *{
                 margin: 0;
                 padding: 0;
             }
             body{
-                background-color: rgb(140, 230, 206);
+                background-color: rgb(127, 185, 230);
             }
             h1{
                 /* background-color: aqua; */
@@ -35,10 +35,11 @@
             }
             .contain{
                 /* background-color: aquamarine; */
-                height: 65vh;
+                height: 60vh;
                 width: 20vw;
                 border: 2px black solid;
                 border-radius: 30px;
+                overflow: hidden;
             }
             .photo{
                 height: 70%;
@@ -46,6 +47,7 @@
             .h2{
                 margin-top: 30px;
                 text-align: center;
+                color: rgb(3, 77, 67);
             }
             h1:hover{
                 opacity: 0.5;
@@ -59,8 +61,26 @@
                 display: flex;
                 justify-content: space-around;
             }
-            h3{
-                margin-top: 10px;
+            img{
+                object-fit: cover;
+            }
+            .photo{
+                background-color: aqua;
+                height: 60%;
+            }
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                /* overflow: hidden; */
+
+            }
+            .down{
+                height: 100%;
+                background-color: rgb(196, 202, 228);
+            }
+            h3,h5{
+                text-align: center;
             }
         </style>
     </head>
@@ -83,28 +103,44 @@
         </div>
         <div class="container">
             <div id="one" class="contain">
-                <div class="photo"><img src="" ></div>
-                <h3>Tapas Walde</h3>
-                <h5>contact no. 7378611973</h5>
-                <h2 class="h2">Web Developer & Engineering Student</h2>
+                <div class="photo">
+                    <img src="img/tapas.jpeg" >
+                </div>
+                <div class="down">
+                    <h3>Tapas Walde</h3>
+                    <h5>contact no. 7378611973</h5>
+                    <h2 class="h2">Web Developer & Engineering Student</h2>
+                </div>
             </div>
             <div id="two"  class="contain">
-                <div class="photo"><img src="" ></div>
-                <h3>Sujal Dhandale</h3>
-                <h5>contact no. 8329376341</h5>
-                <h2 class="h2">Web Developer & Engineering Student</h2>
+                <div class="photo">
+                    <img src="img/sujal.jpeg" >
+                </div>
+                <div class="down">
+                    <h3>Sujal Dhandale</h3>
+                    <h5>contact no. 8329376341</h5>
+                    <h2 class="h2">Web Developer & Engineering Student</h2>
+                </div>
             </div>
             <div id="three"  class="contain">
-                <div class="photo"><img src="" ></div>
-                <h3>Prathamesh Lande</h3>
-                <h5>contact no. 9284222826</h5>
-                <h2 class="h2">Web Developer & Engineering Student</h2>
+                <div class="photo">
+                    <img src="img/prathamesh.jpeg" >
+                </div>
+                <div class="down">
+                    <h3>Prathamesh Lande</h3>
+                    <h5>contact no. 9284222826</h5>
+                    <h2 class="h2">Web Developer & Engineering Student</h2>
+                </div>
             </div>
             <div id="four"  class="contain">
-                <div class="photo"><img src="" ></div>
-                <h3>Vansh Bamborde</h3>
-                <h5>contact no. 9975787669</h5>
-                <h2 class="h2">Web Developer & Engineering Student</h2>
+                <div class="photo">
+                    <img src="img/vansh.JPG" >
+                </div>
+                <div class="down">
+                    <h3>Vansh Bamborde</h3>
+                    <h5>contact no. 9975787669</h5>
+                    <h2 class="h2">Web Developer & Engineering Student</h2>
+                </div>
             </div>
         </div>
     </body>
