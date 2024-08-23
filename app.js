@@ -26,13 +26,10 @@ app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/", (req,res) => {
-   res.send("this is your home page");
+    res.render("../views/listings/home.ejs");
 });
 
-
-app.all("*", (req, res, next) => {
-    next(new ExpressError(404, "Page Not Found"));
-});
+app.get("")
 
 app.listen(8080, () => {
     console.log("server is listening to port 8080");
