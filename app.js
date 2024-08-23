@@ -29,7 +29,14 @@ app.get("/", (req,res) => {
     res.render("../views/listings/home.ejs");
 });
 
-app.get("")
+app.get("/trackingexpense", (req,res) => {
+    res.render("../views/listings/tracking.ejs");
+});
+
+
+app.get("/contact", (req,res) => {
+    res.render("../views/listings/contact.ejs");
+});
 
 app.listen(8080, () => {
     console.log("server is listening to port 8080");
