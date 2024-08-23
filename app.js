@@ -9,6 +9,7 @@ const passport = require("passport");
 const LocalStorage = require("passport-local");
 const User = require("./models/user.js");
 const session = require("express-session");
+const { rmSync } = require("fs");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/smackathon";
 
@@ -73,6 +74,14 @@ app.post("/signup", async(req,res) => {
   const newUser = new User({email, username});
   const registeredUser = await User.register(newUser, password);
   console.log(registeredUser);
+  res.redirect("/");
+});
+
+app.get("/login", (req,res) => {
+    res.render("users/login.ejs");
+});
+
+app.post("/login", passport.authenticate( "local"), async(req,res) => {
   res.redirect("/");
 });
 
