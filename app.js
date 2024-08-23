@@ -51,7 +51,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get("/trackingexpense", (req,res) => {
-    res.render("../views/listings/tracking.ejs");
+    res.render("../views/listings/trackingex.ejs");
 });
 
 app.get("/managingdebt", (req,res) => {
