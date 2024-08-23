@@ -3,227 +3,217 @@
     
 
 <head>
-    <title>Tracking Expense</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expense Tracker App</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" 
+        rel="stylesheet">
     <style>
-      body {
-    font-family: Arial, sans-serif;
-    background-color: #1f2029;
-    margin: 0;
-    padding: 0;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+        *{
+    margin:0;
+    font-family: 'Titillium Web', sans-serif;
 }
 
-.container {
-    max-width: 1050px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+body{
+    background:#042159;
+    color:#77D9AB;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.title{
+    width: 500px;
+    color:#0869A6;
+    margin:3% auto;
 }
 
-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+.content{
+    width: 580px;
+    margin: 0 auto;
+    background-color:#0869A6;
+    padding: 3%;
+    padding-left: 6%;
 }
 
-form input, form select, form button {
+.secondTitle{
+    text-align:left;
+    margin: 2% 0;
+    font-weight: 100;
+}
+
+.form{
+    padding: 5px;
+}
+
+.formLine{
+    display: inline-flex;
+    padding: 5px 0px;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float:right;
+    margin-right: 100px;
+}
+
+input, select{
+    width: 130px;
+    margin-left: 10px;
+}
+
+/* table style */
+table{
+    width: 100%;
+}
+
+thead{
+    background-color:#042159;
+    line-height: 30px;
+}
+
+/* Button */
+
+button{
+    width: 200px;
+    color:#fff; 
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form button {
-    background-color: #28a745;
-    color: white;
-    border: none;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 20px;
+    background-color: #04BF8A;
+    border-radius: 5px;
+    margin: 14px 25%;
     cursor: pointer;
 }
 
-form button:hover {
-    background-color: #218838;
-}
-
-.expense-table table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.expense-table th, .expense-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.expense-table th {
-    background-color: #f8f8f8;
-}
-
-.total-amount {
-    text-align: right;
-    font-size: 18px;
-}
-
-.filter {
-    margin-bottom: 20px;
-    text-align: right;
-}
-
-.filter label {
-    margin-right: 10px;
-}
-
-.filter select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+a{
+    text-decoration: underline;
+    cursor: pointer;
 }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Expense Tracker</h1>
-        <form id="expense-form">
-            <input type="text" id="expense-name" placeholder="Expense Name" required />
-            <input type="number" id="expense-amount" placeholder="Amount" required />
-            <select id="expense-category" required>
-                <option value="" disabled selected>Select Category</option>
-                <option value="Food">Food</option>
-                <option value="Transport">Transport</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Other">Other</option>
-            </select>
-            <input type="date" id="expense-date" required />
-            <button type="submit">Add Expense</button>
-        </form>
-        <div class="expense-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Expense Name</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="expense-list"></tbody>
-            </table>
-            <div class="total-amount">
-                <strong>Total:</strong>₹<span id="total-amount">0</span>
-            </div>
+    <header>
+        <h1 class="title">Expense Tracker App</h1>
+    <header>
+
+    <section class="content">
+        <h3 class="secondTitle">Add a new item: </h3>
+        <div class="form">
+            <form id="expForm">
+                <div class="formLine left">
+                    <span for="type">Type:</span>
+                    <select id="type">
+                        <option value="chooseOne">Choose one...</option>
+                        <option value="Card">Card</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Cryptocoin">Cryptocoin</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="formLine right">
+                    <span for="name">Name:</span>
+                    <input type="text" id="name">
+                </div>
+
+                <div class="formLine left">
+                    <span for="date">Date:</span>
+                    <input type="date" id="date">
+                </div>
+                <div class="formLine right">
+                    <span for="amount">Amount:</span>
+                    <input type="text" id="amount">
+                </div>
+                <button type="submit" class="buttonSave">Add a new expense</button>
+            </form>
         </div>
-        <div class="filter">
-            <label for="filter-category">Filter by Category:</label>
-            <select id="filter-category">
-                <option value="All">All</option>
-                <option value="Food">Food</option>
-                <option value="Transport">Transport</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-    </div>
+    </section>
+    <section class="content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTable">
+
+            </tbody>
+        </table>
+    </section>
     <script >
-      document.addEventListener("DOMContentLoaded", () => {
-    const expenseForm = document.getElementById("expense-form");
-    const expenseList = document.getElementById("expense-list");
-    const totalAmount = document.getElementById("total-amount");
-    const filterCategory = document.getElementById("filter-category");
+        document.getElementById('expForm').addEventListener('submit', addExpense);
 
-    let expenses = [];
+// initial array of expenses, reading from localStorage
+const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-    expenseForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+function addExpense(e){
+    e.preventDefault();
 
-        const name = document.getElementById("expense-name").value;
-        const amount = parseFloat(document.getElementById("expense-amount").value);
-        const category = document.getElementById("expense-category").value;
-        const date = document.getElementById("expense-date").value;
+    // get type, name, date, and amount
+    let type = document.getElementById('type').value;
+    let name = document.getElementById('name').value;
+    let date = document.getElementById('date').value;
+    let amount = document.getElementById('amount').value;
 
+    if(type != 'chooseOne' 
+        && name.length > 0 
+        && date != 0 
+        && amount > 0){
         const expense = {
-            id: Date.now(),
-            name,
-            amount,
-            category,
-            date
-        };
+            type, 
+            name, 
+            date,
+            amount, 
+            id: expenses.length > 0 ? expenses[expenses.length - 1].id + 1 : 1,
+        }
 
         expenses.push(expense);
-        displayExpenses(expenses);
-        updateTotalAmount();
-
-        expenseForm.reset();
-    });
-
-    expenseList.addEventListener("click", (e) => {
-        if (e.target.classList.contains("delete-btn")) {
-            const id = parseInt(e.target.dataset.id);
-            expenses = expenses.filter(expense => expense.id !== id);
-            displayExpenses(expenses);
-            updateTotalAmount();
-        }
-
-        if (e.target.classList.contains("edit-btn")) {
-            const id = parseInt(e.target.dataset.id);
-            const expense = expenses.find(expense => expense.id === id);
-
-            document.getElementById("expense-name").value = expense.name;
-            document.getElementById("expense-amount").value = expense.amount;
-            document.getElementById("expense-category").value = expense.category;
-            document.getElementById("expense-date").value = expense.date;
-
-            expenses = expenses.filter(expense => expense.id !== id);
-            displayExpenses(expenses);
-            updateTotalAmount();
-        }
-    });
-
-    filterCategory.addEventListener("change", (e) => {
-        const category = e.target.value;
-        if (category === "All") {
-            displayExpenses(expenses);
-        } else {
-            const filteredExpenses = expenses.filter(expense => expense.category === category);
-            displayExpenses(filteredExpenses);
-        }
-    });
-
-    function displayExpenses(expenses) {
-        expenseList.innerHTML = "";
-        expenses.forEach(expense => {
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <td>${expense.name}</td>
-                <td>$${expense.amount.toFixed(2)}</td>
-                <td>${expense.category}</td>
-                <td>${expense.date}</td>
-                <td>
-                    <button class="edit-btn" data-id="${expense.id}">Edit</button>
-                    <button class="delete-btn" data-id="${expense.id}">Delete</button>
-                </td>
-            `;
-
-            expenseList.appendChild(row);
-        });
+        // localStorage 
+        localStorage.setItem('expenses', JSON.stringify(expenses));
     }
 
-    function updateTotalAmount() {
-        const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-        totalAmount.textContent = total.toFixed(2);
+    document.getElementById('expForm').reset();
+    showExpenses();
+}
+
+const showExpenses = () => {
+
+    const expenseTable = document.getElementById('expenseTable');
+
+    expenseTable.innerHTML = '';
+
+    for(let i = 0; i < expenses.length; i++){
+        expenseTable.innerHTML += `
+            <tr>
+                <td>${expenses[i].type}</td>
+                <td>${expenses[i].name}</td>
+                <td>${expenses[i].date}</td>
+                <td>₹${expenses[i].amount}</td>
+                <td><a class="deleteButton" onclick="deleteExpense(${expenses[i].id})">
+                    Delete</td>
+            </tr>
+        `;
     }
-});
+}
+
+const deleteExpense = (id) => {
+    for(let i = 0; i < expenses.length; i++){
+        if(expenses[i].id == id){
+            expenses.splice(i, 1);
+        }
+    }
+
+    // localStorage
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    showExpenses();
+}
+
+showExpenses();
     </script>
-</body>
-
 
 </body>
