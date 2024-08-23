@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const passport = require("passport");
-const localStorge = require("passport-local");
+const LocalStorage = require("passport-local");
 const User = require("./models/user.js");
 const session = require("express-session");
 
@@ -42,6 +42,11 @@ app.use(
 );
 
 app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStorage(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get("/trackingexpense", (req,res) => {
     res.render("../views/listings/tracking.ejs");
@@ -59,7 +64,7 @@ app.get("/contact", (req,res) => {
     res.render("../views/listings/contact.ejs");
 });
 
-app.get("/login", (req,res) => {
+app.get("/signup", (req,res) => {
     res.render("")
 })
 
