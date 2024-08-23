@@ -55,7 +55,7 @@ app.get("/trackingexpense", (req,res) => {
 });
 
 app.get("/managingdebt", (req,res) => {
-    res.render("../views/listings/managing.ejs");
+    res.render("../views/listings/managingdebt.ejs");
 });
 
 app.get("/financialgoal", (req,res) => {
@@ -80,10 +80,17 @@ app.post("/signup", async(req,res) => {
 
 app.get("/login", (req,res) => {
     res.render("users/login.ejs");
+    req.flash("Success", "You are Logged In");
 });
 
 app.post("/login", passport.authenticate( "local"), async(req,res) => {
+    res.send(req.flash("Success"));
   res.redirect("/");
+});
+
+app.all("*", (req, res, next) => {
+    new ExpressError(404, "Page Not Found");
+    next();
 });
 
 app.listen(8080, () => {

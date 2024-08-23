@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    body {
+    background-color:#8fbc8f ;
+    font-family: 'Trebuchet MS';
+   }
+    h1 {
+    font-size: 35px;
+   }
+    h1 {
+    font-size: 21px;
+    margin-top: 20px;
+   }
+    .calculator {
+    width: 400px;
+    height: 450px;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 20px 0px 0px 100px;
+    border-radius: 50px; 
+
+    color:#8fbc8f ;
+   }
+    input {
+    padding: 7px;
+    width: 70%;
+    margin-top: 7px;
+   }
+.sub{
+    width:300px;
+    font-size: 21px;
+    margin-top: 20px;
+    color:black ;
+    font-weight: 600;
+    display: block;
+}
+</style>
+<body>
+    <div class="calculator">
+        
+        <h2 id="total"></h2>
+        <h1>Debt Predictor</h1>
+        <p>Income (₹) &nbsp;&nbsp;&nbsp;&nbsp;:
+            <input id="income" type="number"  >
+        </p>
+   
+        <p>Loan Amount (₹) &nbsp;&nbsp;&nbsp;&nbsp;:
+            <input id="amount" type="number"  >
+        </p>
+
+        <p>Months to Pay :
+            <input id="months" type="number" >
+        </p>
+        <input type="submit" class="sub" onclick="save()" id="btn">
+        
+    </div>
+    <script>
+        function save() {
+
+
+const amount = document.querySelector("#amount").value;
+const income = document.querySelector("#income").value;
+
+
+const months = document.querySelector("#months").value;
+
+    calculate(amount,income,months);
+
+
+}
+function calculate(amount,income,months){
+const rate = (10.75/100).toFixed(2);
+const interest = (amount * (rate * 0.01)) / months;
+const total = ((amount / months) + interest).toFixed(2);
+const gtotal=12*total;
+const pamount=income*(32.5/100).toFixed(2);
+let Total=document.querySelector("#total");
+
+if(isNaN(gtotal) || isNaN(pamount) || isNaN(months)){
+
+        Total.innerHTML = "";
+        
+    }
+else if(gtotal>pamount){
+    document.getElementById("total").style.color = "red";
+    Total.innerHTML = "You may face debt";
+}
+    else{
+        document.getElementById("total").style.color = "green";
+        Total.innerHTML = "You may not face debt";
+    }
+
+}
+    </script>
+    <h3>*The complete calculation is derived from a firm analysis of surveys conducted by banks and organisations like forbes.</h3>
+</body>
