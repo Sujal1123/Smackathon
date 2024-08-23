@@ -9,7 +9,7 @@ const passport = require("passport");
 const LocalStorage = require("passport-local");
 const User = require("./models/user.js");
 const session = require("express-session");
-const { rmSync } = require("fs");
+const flash = require("connect-flash");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/smackathon";
 
@@ -41,6 +41,7 @@ app.use(
         saveUninitialized: true,
     })
 );
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
