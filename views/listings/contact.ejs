@@ -5,12 +5,107 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                background-color: rgb(140, 230, 206);
+            }
             h1{
-                background-color: aqua;
+                /* background-color: aqua; */
+                text-align: center;
+                margin-top: 20px;
+                text-decoration: underline;
+                color: rgb(8, 8, 103);
+            }
+            #Support{
+                text-align: center;
+                /* background-color: aquamarine; */
+                margin-top: 40px;
+                color: rgb(64, 2, 77);
+            }
+            .container{
+                display: flex;
+                justify-content: space-around;
+                height: 100%;
+                width: 100%;
+                margin-top: 6vh;
+                /* background-color: aqua; */
+            }
+            .contain{
+                /* background-color: aquamarine; */
+                height: 65vh;
+                width: 20vw;
+                border: 2px black solid;
+                border-radius: 30px;
+            }
+            .photo{
+                height: 70%;
+            }
+            .h2{
+                margin-top: 30px;
+                text-align: center;
+            }
+            h1:hover{
+                opacity: 0.5;
+                cursor: pointer;
+            }
+            #Support:hover{
+                opacity: 0.5;
+                cursor: pointer;
+            }
+            .boxes{
+                display: flex;
+                justify-content: space-around;
+            }
+            h3{
+                margin-top: 10px;
             }
         </style>
     </head>
     <body>
-        <h1>vansc</h1>
+        <h1>GET IN TOUCH WITH US</h1>
+        <h2 id="Support">Our Support Team</h2>
+        <div class="boxes">
+            <div class="box">
+                <h1 id="chat">Chat Support</h1>
+                <p>Our support team is just a click away</p>
+            </div>
+            <div class="box">
+                <h1 id="email">Email supportive</h1>
+                <p>Prefer to email? Send us an email and we will get back to you soon.</p>
+            </div>
+            <div class="box">
+                <h1 id="help">Help center</h1>
+                <p>Our self-serve help center is open 24/7.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div id="one" class="contain">
+                <div class="photo"><img src="" ></div>
+                <h3>Tapas Walde</h3>
+                <h5>contact no. 7378611973</h5>
+                <h2 class="h2">Web Developer & Engineering Student</h2>
+            </div>
+            <div id="two"  class="contain">
+                <div class="photo"><img src="" ></div>
+                <h3>Sujal Dhandale</h3>
+                <h5>contact no. 8329376341</h5>
+                <h2 class="h2">Web Developer & Engineering Student</h2>
+            </div>
+            <div id="three"  class="contain">
+                <div class="photo"><img src="" ></div>
+                <h3>Prathamesh Lande</h3>
+                <h5>contact no. 9284222826</h5>
+                <h2 class="h2">Web Developer & Engineering Student</h2>
+            </div>
+            <div id="four"  class="contain">
+                <div class="photo"><img src="" ></div>
+                <h3>Vansh Bamborde</h3>
+                <h5>contact no. 9975787669</h5>
+                <h2 class="h2">Web Developer & Engineering Student</h2>
+            </div>
+        </div>
     </body>
 </html>
