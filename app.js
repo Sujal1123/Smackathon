@@ -55,6 +55,7 @@ app.get("/trackingexpense", (req,res) => {
 });
 
 app.get("/managingdebt", (req,res) => {
+    
     res.render("../views/listings/managingdebt.ejs");
 });
 

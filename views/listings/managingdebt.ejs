@@ -54,6 +54,10 @@
         <p>Months to Pay :
             <input id="months" type="number" >
         </p>
+
+        <p>Rate Of Interest on your loan amount :
+            <input id="rate" type="number" >
+        </p>
         <input type="submit" class="sub" onclick="save()" id="btn">
         
     </div>
@@ -66,14 +70,15 @@ const income = document.querySelector("#income").value;
 
 
 const months = document.querySelector("#months").value;
+const rate = document.querySelector("#rate").value;
 
-    calculate(amount,income,months);
+    calculate(amount,income,months,rate);
 
 
 }
-function calculate(amount,income,months){
-const rate = (10.75/100).toFixed(2);
-const interest = (amount * (rate * 0.01)) / months;
+function calculate(amount,income,months,rate){
+const newRate = rate;
+const interest = (amount * (newRate * 0.01)) / months;
 const total = ((amount / months) + interest).toFixed(2);
 const gtotal=12*total;
 const pamount=income*(32.5/100).toFixed(2);
@@ -86,11 +91,11 @@ if(isNaN(gtotal) || isNaN(pamount) || isNaN(months)){
     }
 else if(gtotal>pamount){
     document.getElementById("total").style.color = "red";
-    Total.innerHTML = "You may face debt";
+    Total.innerHTML = "You may face debt if you take loan in this financial state";
 }
     else{
         document.getElementById("total").style.color = "green";
-        Total.innerHTML = "You may not face debt";
+        Total.innerHTML = "You may not face debt if you take loan in this financial state";
     }
 
 }
