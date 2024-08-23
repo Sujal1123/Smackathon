@@ -1,1 +1,1 @@
-This is the project for smackathon based on Expense and Debt management.
+This is the project made by our team Tech Titans for smackathon having problem statement for Expense and Debt management.
