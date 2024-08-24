@@ -30,20 +30,29 @@
     margin-top: 7px;
    }
 .sub{
-    width:300px;
+    width:281px;
     font-size: 21px;
     margin-top: 20px;
     color:black ;
     font-weight: 600;
     display: block;
 }
+.sub:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.bug{
+    display: flex;
+    flex-direction: column;
+}
 </style>
 <body>
-    <div style="margin-top: 20px;" class="calculator">
+    <h2 id="total"></h2>
+    <div class="calculator">
         
-        <h2 id="total"></h2>
+        
         <h1>Debt Predictor</h1>
-        <p>Income (₹) &nbsp;&nbsp;&nbsp;&nbsp;:
+        <p class="bug">Income (₹) &nbsp;&nbsp;&nbsp;&nbsp;:
             <input id="income" type="number"  >
         </p>
    
@@ -51,7 +60,7 @@
             <input id="amount" type="number"  >
         </p>
 
-        <p>Months to Pay :
+        <p class="bug">Months to Pay :
             <input id="months" type="number" >
         </p>
 
