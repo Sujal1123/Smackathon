@@ -1,0 +1,129 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Goals</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:#1f2029;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#policy-result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #e9ecef;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Financial  Goals</h1>
+        <form id="policy-form">
+            <label for="income">Enter your income:</label>
+            <input type="number" id="income" name="income" required>
+            <button type="submit">Generate Policy</button>
+        </form>
+        <div id="policy-result">
+            <!-- Policy results will be displayed here -->
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('policy-form').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+
+        const income = parseInt(document.getElementById('income').value, 10);
+        const policyResult = generatePolicy(income);
+
+        document.getElementById('policy-result').innerHTML = policyResult;
+    });
+});
+
+function generatePolicy(income) {
+    let result = '';
+    if (income < 300000) {
+        result = `
+            <h2>Policy Recommendations for Income Below ₹3,00,000</h2>
+            <p><strong>Budget Plan:</strong> Focus on essential spending and basic savings.</p>
+            <p><strong>Savings Plan:</strong> Emergency fund in savings account or Recurring Deposit.</p>
+            <p><strong>Investment Plan:</strong> Minimal investment; focus on savings.</p>
+            <p><strong>Insurance Plan:</strong> Basic health insurance (e.g., Ayushman Bharat).</p>
+        `;
+    } else if (income >= 300000 && income < 1000000) {
+        result = `
+            <h2>Policy Recommendations for Income ₹3,00,000 to ₹10,00,000</h2>
+            <p><strong>Budget Plan:</strong> Allocate more towards savings and investment.</p>
+            <p><strong>Savings Plan:</strong> Public Provident Fund (PPF), Fixed Deposit (FD), Recurring Deposit (RD).</p>
+            <p><strong>Investment Plan:</strong> Mutual Funds (SIP), National Pension System (NPS).</p>
+            <p><strong>Insurance Plan:</strong> Comprehensive health insurance, term life insurance.</p>
+        `;
+    } else {
+        result = `
+            <h2>Policy Recommendations for Income Above ₹10,00,000</h2>
+            <p><strong>Budget Plan:</strong> More flexibility for discretionary spending and advanced investments.</p>
+            <p><strong>Savings Plan:</strong> Diversify with PPF, FD, high-yield options.</p>
+            <p><strong>Investment Plan:</strong> Stocks, ETFs, real estate, advanced investment strategies.</p>
+            <p><strong>Insurance Plan:</strong> Premium health insurance, life insurance, critical illness coverage.</p>
+        `;
+    }
+
+    return result;
+}
+    </script>
+</body>
