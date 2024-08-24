@@ -1,13 +1,18 @@
 <% layout("/layouts/boilerplate") %>
  <style>
         #body{
-            background-image: url("/images/bank.jpg");
+            background-image: url("img/pra.jpeg");
             background-size: cover;
         }
         #username,#pasword{
-            width: 45%;
-            background-color:rgb(234, 237, 244);
-            
+            width: 35%;
+            background-color:rgb(234, 237, 244);  
+        }
+        @media(max-width:600px){
+               div #username,#pasword{
+                width: 70%;
+                /* background-color: rgb(234, 237, 244); */
+            }
         }
         #login{
             margin-top: 10px;
