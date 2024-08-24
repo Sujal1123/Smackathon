@@ -1,6 +1,6 @@
  <head>
     <meta charset="utf-8">
-   <title>Responsive Navigation Menu</title>
+   <title></title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -95,11 +95,13 @@ input[type="checkbox"]{
   }
   #click:checked ~ ul li a{
     margin-left: 0px;
+z-index:999;
   }
   nav ul li a.active,
   nav ul li a:hover{
     background: none;
     color: cyan;
+z-index:999;
   }
 }
 .content{
@@ -122,21 +124,17 @@ input[type="checkbox"]{
   </head>
   <body>
     <nav>
-      <div class="logo">Brand</div>
+     <a href="/"> <div class="logo">Finsock</div></a>
       <input type="checkbox" id="click">
       <label for="click" class="menu-btn">
         <i class="fas fa-bars"></i>
       </label>
       <ul>
-        <li><a class="active" href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Feedback</a></li>
+        <li><a href="/managingdebt">Managing Debt</a></li>
+        <li><a href="/trackingexpenses">Tracking Expenses</a></li>
+        <li><a href="/financialgoal">Financial Goals</a></li>
+        <li><a href="/contact">Contact Us</a></li>
       </ul>
     </nav>
-    <div class="content">
-      <div>Responsive Navigation Menu Bar Design</div>
-      <div>using only HTML & CSS</div>
-    </div>
+  
   </body>
