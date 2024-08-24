@@ -81,11 +81,9 @@ app.post("/signup", async(req,res) => {
 
 app.get("/login", (req,res) => {
     res.render("users/login.ejs");
-    req.flash("Success", "You are Logged In");
 });
 
 app.post("/login", passport.authenticate( "local"), async(req,res) => {
-    res.send(req.flash("Success"));
   res.redirect("/");
 });
 
