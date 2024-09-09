@@ -83,7 +83,7 @@ app.get("/login", (req,res) => {
     res.render("users/login.ejs");
 });
 
-app.post("/login", passport.authenticate( "local"), async(req,res) => {
+app.post("/login", passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }), async(req,res) => {
   res.redirect("/");
 });
 
