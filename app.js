@@ -11,7 +11,8 @@ const User = require("./models/user.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/smackathon";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/smackathon";
+const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() => {
     console.log("connected to db");
@@ -20,7 +21,7 @@ main().then(() => {
 });
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
 app.set("views engine", "ejs");
@@ -83,7 +84,7 @@ app.get("/login", (req,res) => {
     res.render("users/login.ejs");
 });
 
-app.post("/login", passport.authenticate( "local"), async(req,res) => {
+app.post("/login", passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }), async(req,res) => {
   res.redirect("/");
 });
 
