@@ -9,10 +9,11 @@ const passport = require("passport");
 const LocalStorage = require("passport-local");
 const User = require("./models/user.js");
 const session = require("express-session");
+const MongoStrore = require("connect-mongo");
 const flash = require("connect-flash");
+const MongoStore = require("connect-mongo");
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/smackathon";
-const dbUrl = process.env.ATLASDB_URL;
+let uri = "mongodb+srv://sujaldandhale:PgBoh6l72RNS5x9q@cluster1.tkzjs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1";
 
 main().then(() => {
     console.log("connected to db");
@@ -21,8 +22,9 @@ main().then(() => {
 });
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(uri);
 }
+
 
 app.set("views engine", "ejs");
 app.set("views",path.join(__dirname, "views"));
@@ -35,13 +37,29 @@ app.get("/", (req,res) => {
     res.render("../views/listings/home.ejs");
 });
 
+
+const store = MongoStore.create({
+    mongoUrl: uri,
+    crypto: {
+      secret: "mysecretcode",
+    },
+    touchAfter: 24*3600
+  });
+
+  store.on("error", () => {
+    console.log("error in mongo session store", err);
+  });
+
 app.use(
     session({
+        store: MongoStore.create({ mongoUrl: dbUrl }),
         secret: "mysecretcode",
         resave: false,
         saveUninitialized: true,
     })
 );
+
+
 app.use(flash());
 
 app.use(passport.initialize());
